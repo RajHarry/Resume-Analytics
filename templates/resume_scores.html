@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
+	<title>Resume Scores</title>
+</head>
+<body class="ui container">
+
+		<table class="ui table">
+		<thead>
+			<th>S.No.</th>
+			<th>File Name</th>
+			<th>Score %</th>
+			<th>Action</th>
+		</thead>
+		<tbody>
+
+			{% for s_no,f_name,email,p_ern in data %}
+			<tr>
+				<td>{{s_no}}</td>
+				<td>{{f_name}}</td>
+				<!-- <td>{{email}}</td> -->
+				<td>{{p_ern}}</td>
+				<td><a href="Upload/?id={{s_no}}"><button class="ui blue button">View Score</button></a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+		</table>
+</body>
+</html>
