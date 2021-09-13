@@ -448,7 +448,6 @@ def main(temp_name,jd_name,res_folder_name):
     jd_dir = jd_name.replace("/"+jd_name.split('/')[-1],"/")    
     is_jd = True
     main_jd_data,final_data_jd,n_skills,n_deg = util_fun.get_jd_data(temp_name,jd_dir,jd_name,is_jd)
-    
     ############################# Resumes Text Extraction ###########################
     files = glob.glob(res_folder_name+"/*")
     #print("resumes_list: ",files)
@@ -460,22 +459,9 @@ def main(temp_name,jd_name,res_folder_name):
     is_jd = False
     for file in files:
         file_name = file.split("/")[-1]
-        in_file = file
-        out_file =  file.replace("."+file.split(".")[-1],".txt")
-        
-        #out_dir = os.getcwd()+"/media/"+temp_name+"/temp_images"
-        #if not os.path.exists(out_dir):
-        #    os.makedirs(out_dir)
-
-        #print("file: ",file)
         main_text_data,final_data,n_skills,n_deg = util_fun.get_jd_data(temp_name,res_folder_name,file,is_jd)
         l11 = []
         l11.append(main_text_data)
-        #with open('your_file.txt', 'w') as f:
-        #    for item in l11:
-        #        f.write("%s\n" % item)
-        #assert(False)
-        #print("main_text_data: ",l11)
         rl,copy_data = util_fun.data_process(main_text_data)
         #print(rl)
         print("Headline Extraction: ")
@@ -502,7 +488,7 @@ def main(temp_name,jd_name,res_folder_name):
             print("Points: [{},{},{},{},{}]".format(aca_points,ae_points,exp_points,proj_points,skill_points))
             got_points = (((aca_points/1.0)*100)+((ae_points/1.5)*100)+((exp_points/3.0)*100)+((proj_points/2.0)*100)+((skill_points/2.5)*100))/5
             got_points = round(got_points,2)
-            print("\n# *Got {} Points out of {} Points*...".format(got_points,tot_points))
+            print("\n *Got {} Points out of {} Points*...".format(got_points,tot_points*10))
 
             det_for_df = [file_name,email,phone,got_points,tot_points,aca_points,ae_points,exp_points,proj_points,skill_points]
             df.loc[row] = det_for_df

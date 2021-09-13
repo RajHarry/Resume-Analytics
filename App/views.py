@@ -87,6 +87,7 @@ def _handle_uploaded_file(dirname,file,flg):
         destination.write(chunk)
     destination.close()
 
+
 def get_index(request):
     return render(request, 'index.html', {})
 def get_score_points(ind):
@@ -148,7 +149,7 @@ def post_upload_images(request):
         _handle_uploaded_file(dirname,afile,1)
     res_files = os.getcwd()+"/media/"+dirname+"/resumes"
     jds = os.getcwd()+"/media/"+dirname+"/"+str(jobDescription.name)
-    #print("cwd:>>>",os.getcwd())
+    print("cwd:>>>",os.getcwd())
     #print("files: >>",res_files)
     #print("jd: >>>>",jds)
     file_path = main.main(dirname,jds,res_files)

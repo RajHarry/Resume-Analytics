@@ -10,6 +10,8 @@ import operator,collections
 from dateutil.parser import parse
 import calendar,datetime,time
 
+from .pdf2text import pdf2text
+
 import nltk
 from nltk.corpus import stopwords 
 from nltk.tokenize import word_tokenize,sent_tokenize
@@ -373,19 +375,13 @@ def get_jd_data(temp_folder_name,jd_dir,filename,is_jd):
     else:
         directory = "media/"+temp_folder_name+"/resumes/"
     in_file = directory+"/"+filename
-    f_out = in_file.replace("."+in_file.split('.')[-1],".txt")
+    extractedText = ''
     if(ext == 'pdf'):
-        # print("file_in: {},file_out: {}".format(in_file,f_out))
-        os.system("sudo pdftotext {} {}".format(in_file,f_out))
-    elif(ext in ['doc','docx']):
-        # print("Entered in elif>>>>>>>>>")
-        # print("jd_dir: {}\nin_file:{}".format(jd_dir,in_file))
-        os.system("sudo libreoffice --headless --convert-to 'txt:Text (encoded):UTF8' --outdir {} {}".format(directory,in_file))
+        extractedText = pdf2text(in_file)
+        print("extractedText: ",extractedText)
     else:
         print("File Extension is Not Supported...")
-    f = open(f_out, "r")
-    data = f.read()
-    #print(data)
+    data = extractedText
 
     n_skills = skills_extraction(data.split())
     n_deg = edu_highest_degree(data.split())
@@ -576,8 +572,8 @@ def key_processing_bk(data_file):
     dict1 = {}
     recent,key = True,False
     tokens_list = []
-    print("\t\tLine Number\t\t\tHeadline")
-    print("\t\t---------\t\t--------")
+    print("\t\tLine Number\tHeadline")
+    print("\t\t---------\t--------")
     for en,sent in enumerate(data_file):
         #print(">>>",sent)
         #sent = listToString(sent)
