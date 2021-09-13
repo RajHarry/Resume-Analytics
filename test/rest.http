@@ -1,0 +1,22 @@
+###
+POST http://localhost:8000/Upload
+Content-Type: multipart/form-data; boundary=----Boundary
+
+------Boundary
+Content-Disposition: form-data; name="jobDescription"; filename="PAJD.pdf"
+Content-Type: multipart/pdf
+
+< ./PAJD.pdf
+------Boundary
+Content-Disposition: form-data; name="files"; filename="resume.pdf"
+Content-Type: multipart/pdf
+
+< ./resume.pdf
+------Boundary
+Content-Disposition: form-data; name="files"; filename="resume1.pdf"
+Content-Type: multipart/pdf
+
+< ./PAJD.pdf
+------Boundary--
+# ### for adding multiple files
+# "name" parameter in "Content-Disposition" should be same

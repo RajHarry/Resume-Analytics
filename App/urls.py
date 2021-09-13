@@ -4,6 +4,6 @@ from . import views
 
 urlpatterns = [
     path('', views.get_index, name='index'),
-    path('Upload', views.post_upload_images, name='Upload'),
+    path('Upload', views.upload_files, name='Upload'),
     url(r'^Upload/.*$', views.get_score, name='Resume Score'),
 ]

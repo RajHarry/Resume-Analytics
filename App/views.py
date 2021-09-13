@@ -87,14 +87,10 @@ def data_process(overall_text):
             rl.append(s)
     #print(")***************************(")
     return rl,proj_copy
-def post_upload_images(request):
+def upload_files(request):
     global dirname
-    # Fetch multiple files to list
-    #os.mkdir(os.path.join('/opt/files', dirname))
     files = request.FILES.getlist('files')
     jobDescription = request.FILES.get('jobDescription')
-    #for i in files:
-    #    print(i," ***")
     dirname = datetime.now().strftime('%Y.%m.%d.%H.%M.%S') #2010.08.09.12.08.45 
     _handle_uploaded_file(dirname,jobDescription,0)
     # Iterate the multiple files
@@ -102,9 +98,6 @@ def post_upload_images(request):
         _handle_uploaded_file(dirname,afile,1)
     res_files = os.getcwd()+"/media/"+dirname+"/resumes"
     jds = os.getcwd()+"/media/"+dirname+"/"+str(jobDescription.name)
-    print("cwd:>>>",os.getcwd())
-    #print("files: >>",res_files)
-    #print("jd: >>>>",jds)
     file_path = main.main(dirname,jds,res_files)
     data = pd.read_csv(file_path)
     file_name = data.iloc[:,1].values

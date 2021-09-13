@@ -377,7 +377,6 @@ def get_jd_data(temp_folder_name,jd_dir,filename,is_jd):
     extractedText = ''
     if(ext == 'pdf'):
         extractedText = pdf2text(in_file)
-        print("extractedText: ",extractedText)
     else:
         print("File Extension is Not Supported...")
     data = extractedText
