@@ -1,4 +1,3 @@
-#!/bin/bash
 ## Import Libraries
 from PIL import Image
 #import pytesseract
