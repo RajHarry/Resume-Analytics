@@ -1,18 +1,12 @@
 ## Import Libraries
-from PIL import Image
 #import pytesseract
 #pytesseract.pytesseract.tesseract_cmd = 'C:/Program Files/Tesseract-OCR/tesseract.exe'
-import cv2,glob,time
-import re,logging,os,sys
-import numpy as np
-import pandas
+import glob,time
+import re,os
 import pandas as pd
 import operator,collections
-from dateutil.parser import parse
-import calendar,datetime,time
-import nltk
-from nltk.corpus import stopwords 
-from nltk.tokenize import word_tokenize,sent_tokenize
+import time
+from nltk.corpus import stopwords
 import string as string_func
 from nltk.stem import WordNetLemmatizer 
 lemmatizer = WordNetLemmatizer() 
