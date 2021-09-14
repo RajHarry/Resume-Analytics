@@ -365,9 +365,9 @@ def get_jd_data(temp_folder_name,jd_dir,filename,is_jd):
     in_file = jd_dir+"/"+filename
     ext = filename.split('.')[-1]
     if(is_jd):
-        directory = "media/"+temp_folder_name
+        directory = os.path.join(os.getcwd(), "media/"+temp_folder_name)
     else:
-        directory = "media/"+temp_folder_name+"/resumes/"
+        directory = os.path.join(os.getcwd(), "media/"+temp_folder_name+"/resumes")
     in_file = directory+"/"+filename
     extractedText = ''
     if(ext == 'pdf'):
